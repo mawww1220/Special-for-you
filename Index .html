@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #d0e4f0;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden;
+        }
+        h1 {
+            color: #1f88df;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000;
+        }
+        .button {
+            background-color: #5f3c8b;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px;
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            font-size: 1.5em;
+            border: 2px solid #fff;
+        }
+        .button:hover {
+            background-color: #abf8e5;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #333;
+            transition: opacity 0.5s;
+            opacity: 0;
+        }
+        .show {
+            opacity: 1;
+        }
+        .clicked {
+            transform: scale(1.1);
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes zoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: #05434b;
+            border-radius: 50px 50px 0 0;
+            bottom: -100px;
+            animation: float 5s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-200px); }
+            100% { transform: translateY(0); }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffeb3b;
+            opacity: 0.8;
+            animation: fall 3s infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+        .sticker {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('https://example.com/sticker.png'); /* Ganti dengan URL stiker yang diinginkan */
+            background-size: cover;
+            animation: float 4s infinite;
+        }
+        /* Kue Ulang Tahun */
+        .cake {
+            width: 300px;
+            margin: 0 auto;
+            position: relative;
+            display: none; /* Awalnya disembunyikan */
+        }
+        .candle {
+            width: 10px;
+            height: 30px;
+            background-color: #ffcc00;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+        .flame {
+            width: 10px;
+            height: 10px;
+            background-color: #ff4500;
+            border-radius: 50%;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: flicker 0.5s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1.2); opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎉 Happy Birthday! 🎉</h1>
+    <p>Klik tombol di bawah ini untuk ngelihat animasi dan pesan lucu!</p>
+    <p>Setiap button ada pesan tersembunyi loh!!!</p>
+
+    <div class="button" onclick="animateButton(this, 'cieee makin tuaaa  hahaha!!!')">Bounce</div>
+    <div class="button" onclick="animateButton(this, 'Turut berduka cita atas berkurangnya jatah umur kamu di dunia. Semoga di sisa waktu yang ada, kamu tetap dapat membahagiakan diri sendiri dan orang-orang yang kamu sayang')">Shake</div>
+    <div class="button" onclick="animateButton(this, 'Happy birthday ya! Aku harap di umur kmu yang ke 19 ini kamu jadi pribadi yang lebih baik. Hari ini adalah hari spesialmu, dan aku mau ngucapin terima kasih karena udah jadi orang keren. Terima kasih sudah bikin segala sesuatunya jadi lebih seru, baik itu di saat senang maupun susah.Semoga di tahun baru usiamu ini, kamu dapat kebahagiaan yang luar biasa, semua impianmu tercapai, dan langkahmu selalu baik Teruslah jadi diri sendiri yang luar biasa Jangan pernah ragu mengejar apa yang kamu inginkan karena aku yakin kamu bisa.Once again, happy birthday! You deserve all the love, success, and joy in the world! Love you lots')">Spin</div>
+    <div class="button" onclick="animateButton(this, 'Selamat ulang tahun! Aku sudah siapkan tas branded, mobil baru, rumah, tiket liburan, dan private jet khusus untuk kamu. Kalau mau ambil, silakan claim ke Tuhan karena aku mintanya ke Dia lewat doa, hehehe.')">Zoom</div>
+    <div class="button" onclick="animateButton(this, 'g bisa ngasih hadiah karena ku belum kerja jadi aku ksih ini aj')">duaar</div>
+    <div class="message" id="message"></div>
+
+    <div class="balloon" style="left: 20%; animation-delay: 0s;"></div>
+    <div class="balloon" style="left: 40%; animation-delay: 1s;"></div>
+    <div class="balloon" style="left: 60%; animation-delay: 2s;"></div>
+    <div class="balloon" style="left: 80%; animation-delay: 3s;"></div>
+
+    <div class="sticker" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+    <div class="sticker" style="left: 70%; top: 30%; animation-delay: 1s;"></div>
+
+    <button class="button" onclick="showCake()">Lihat Kue Ulang Tahun 🎂</button>
+
+    <div id="cake" class="cake">
+        <h1>🎂 Selamat Ulang Tahun! 🎂</h1>
+        <div class="cake">
+            <img src="https://example.com/cake.png" alt="Kue Ulang Tahun" width="300"> <!-- Ganti dengan URL gambar kue -->
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+        </div>
+        <p>Semoga semua impianmu menjadi kenyataan!</p>
+        <a class="button" href="#" onclick="hideCake()">Kembali ke Halaman Utama</a>
+    </div>
+
+    <script>
+        // Fungsi untuk membuat confetti
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw'; // Posisi acak di sumbu X
+            confetti.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16); // Warna acak
+            document.body.appendChild(confetti);
+
+            // Menghapus confetti setelah 3 detik
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+
+        // Menghasilkan confetti setiap 200ms
+        setInterval(createConfetti, 200);
+
+        function animateButton(button, msg) {
+            const messageElement = document.getElementById('message');
+            messageElement.innerText = msg;
+            messageElement.classList.add('show'); // Menampilkan pesan
+            button.classList.add('clicked');
+
+            setTimeout(() => {
+                button.classList.remove('clicked');
+            }, 300);
+
+            switch (msg) {
+                case 'cieee makin tuaaa  hahaha!!!':
+                    button.style.animation = 'bounce 0.5s';
+                    break;
+                case 'Turut berduka cita atas berkurangnya jatah umur kamu di dunia. Semoga di sisa waktu yang ada, kamu tetap dapat membahagiakan diri sendiri dan orang-orang yang kamu sayang':
+                    button.style.animation = 'shake 0.5s';
+                    break;
+                case 'Happy birthday ya! Aku harap di umur kmu yang ke 19 ini kamu jadi pribadi yang lebih baik. Hari ini adalah hari spesialmu, dan aku mau ngucapin terima kasih karena udah jadi orang keren. Terima kasih sudah bikin segala sesuatunya jadi lebih seru, baik itu di saat senang maupun susah.Semoga di tahun baru usiamu ini, kamu dapat kebahagiaan yang luar biasa, semua impianmu tercapai, dan langkahmu selalu baik Teruslah jadi diri sendiri yang luar biasa Jangan pernah ragu mengejar apa yang kamu inginkan karena aku yakin kamu bisa.Once again, happy birthday! You deserve all the love, success, and joy in the world! Love you lots':
+                    button.style.animation = 'spin 0.5s';
+                    break;
+                case 'Selamat ulang tahun! Aku sudah siapkan tas branded, mobil baru, rumah, tiket liburan, dan private jet khusus untuk kamu. Kalau mau ambil, silakan claim ke Tuhan karena aku mintanya ke Dia lewat doa, hehehe.':
+                    button.style.animation = 'zoom 0.5s';
+                    break;
+                case 'g bisa ngasih hadiah karena ku belum kerja jadi aku ksih ini aj':
+                    button.style.animation = 'zoom 0.5s';
+                    break;
+            }
+
+            setTimeout(() => {
+                messageElement.classList.remove('show'); // Menyembunyikan pesan setelah beberapa detik
+            }, 3000);
+        }
+
+        function showCake() {
+            const cakeElement = document.getElementById('cake');
+            cakeElement.style.display = 'block'; // Menampilkan kue
+        }
+
+        function hideCake() {
+            const cakeElement = document.getElementById('cake');
+            cakeElement.style.display = 'none'; // Menyembunyikan kue
+        }
+    </script>
+</body>
+</html>
